@@ -2,15 +2,45 @@ package main;
 
 import java.util.ArrayList;
 
-public class MAIN {
 
+public class MAIN {
 
     public static void main(String[] args) {
 
+    	// create a new deck and pass 1 as an argument for
+    	// number of decks parameter in the Deck constructor
         Deck deck = new Deck(1);
+        
+        // Create and print out the deck
         deck.createDeck();
-       System.out.println(deck);
-    }
+        System.out.println(deck);
+        
+        // Shuffle and print out the deck
+        deck.shuffleDeck();
+        System.out.println(deck);
 
+        // Print out the 5 cards returned from all the shuffled cards and use the getValue() method from the Card class
+        // to print out the sum of the values of the 5 cards
+        ArrayList<Card> hand1 = deck.dealCards(5);
+        System.out.print(hand1);
+        int hand1Value = 0;
+        for (int i = 0; i < hand1.size(); i++) {
+            hand1Value += hand1.get(i).getValue();
+        }
+        System.out.println(" Value = " + hand1Value);
+
+     // This does the same thing as hand1 but it will have different value for the cards (since the cards will be different)
+     // so a different sum will be printed 
+        ArrayList<Card> hand2 = deck.dealCards(5);
+        System.out.print(hand2);
+        int hand2Value = 0;
+        for (int i = 0; i < hand2.size(); i++) {
+            hand2Value += hand2.get(i).getValue();
+        }
+        System.out.println(" Value = " + hand2Value);
+
+        // Print the cards in the deck after removing 10 cards from the original deck (by calling the dealCards method twice)
+        System.out.println(deck);
+    }
 
 }
