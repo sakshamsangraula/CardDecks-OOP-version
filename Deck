@@ -1,0 +1,112 @@
+package deck;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+// The Deck class creates and maintains a deck of card
+public class Deck {
+
+	// Declare instance variables
+	private ArrayList<Card> deck;
+	private int numDecks;
+	
+	// Initialize the instance variables in the constructor
+	public Deck(int numDecks)
+	{
+		deck = new ArrayList<>();
+		this.numDecks = numDecks;
+	}
+	
+	// This method creates new cards by calling the constructor of the Card
+	// class and adding the new cards to the deck ArrayList
+	public void createDeck()
+	{
+	// S refers to spades, C refers to Clubs, H refers to Hearts, 
+	// and D refers to Diamonds
+		ArrayList<String> suit = new ArrayList<>(Arrays.asList("S", "C", "H", "D"));
+	
+	// loop through the number of decks
+	for(int i=0; i<numDecks; i++)
+	{
+		// have an outer loop going through the suit and inner loop for the face
+		// and call the constructor of the Card class passing the value
+		// from 1 to 13 representing the face of the card and suit
+		// as arguments and add each new card to the deck ArrayList
+		for(int j=0; j<suit.size(); i++)
+		{
+			for(int k=1; k<=13; k++)
+			{
+				deck.add(new Card(k, suit.get(j)));
+			}
+		}
+	}
+	
+				
+		
+	}
+	
+	// Shuffle the cards using a loop and Math.random() function
+	public void shuffleDeck()
+	{
+		// do a 3 way swap with the cards to shuffle the deck: create a temp
+		// variable that has the current card and put a random card
+		// in that position and the current card in the random position
+		
+		// generate a random number for index
+		for(int i=0; i<deck.size(); i++)
+		{
+		int randIdx = (int) (Math.random() * 52);
+		
+		Card temp = deck.get(i);
+		deck.set(i,  deck.get(randIdx));
+		deck.set(randIdx, temp);
+		}
+		
+	}
+	
+	// Remove numCards number of cards from the original ArrayList 
+	// and add it to the new ArrayList
+	public ArrayList<Card> dealCards (int numCards)
+	{
+		// create a new ArrayList of type Card
+		ArrayList <Card> anotherDeck = new ArrayList<>();
+		
+		// loop through numCards, remove the cards in the original array
+		// and add them in the new array
+		
+		for (int i=0; i<numCards; i++)
+		{
+			anotherDeck.add(deck.remove(0));
+		}
+		
+		return anotherDeck;
+
+	}
+	
+	// Print out the cards in a neat and orderly way
+	// This method overrides the toString() method of the Object class in Java
+	// so this is an example of polymorphism
+	public String toString()
+	{
+		// Create a new String that puts all the cards together followed by a 
+		// space
+		String allCards = "";
+		// if i is a multiple of 13 or a multiple of 52 print a new line
+		// Two if statements are used here because after a new deck is printed
+		// there will be 2 lines after that and the second deck will be printed
+		for(int i=0; i<deck.size(); i++)
+		{
+			if(i%13 == 0)
+			{
+				allCards +="\n";
+			}
+			if(i%52 == 0)
+			{
+				allCards += "\n";
+			}
+			
+			allCards += deck.get(i) + " ";
+		}
+		return allCards;
+	}
+}
