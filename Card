@@ -1,17 +1,19 @@
 package card;
 
+// This class returns the face and suit of each card along with it's value
 public class Card {
 
-    public String learner = "lastname, firstname";
     private String face;
     private String suit;
     private int value;
 
- 
+ // The constructor initializes the instance variables
     public Card(int value, String suit) {
         this.value= value;
         this.suit= suit;
         
+        // if the values are 1, 11, 12, or 13 then the face is set to
+        // A, J, Q, and K respectively
         if (value >=2 && value<=10){
             face = value + "";
         }
@@ -30,12 +32,18 @@ public class Card {
 
     }
    
+    // This is a getter method that returns the value of the card and
+    // it is called in the main class to get the values of the numCards
+    // number of cards added together in the dealCards() method
+    // in the Deck Class
     public int getValue() {
         return value;
 
     }
 
-    
+    // This method overrides the toString() method of the Object class
+    // so this is an example of polymorphism
+    // This method returns the face followed by the suit
     public String toString() {
         return face + suit;
 
