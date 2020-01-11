@@ -1,6 +1,6 @@
 # CardDecks-OOP-version
 
-This is the Object-Oriented programming of the CardDecks class. There are 3 classes: Card, Deck, and Main. 
+This is the Object-Oriented programming version of the CardDecks class. There are 3 classes: Card, Deck, and Main. 
 
 The Deck class creates new cards objects by calling the constructor of the Card class. Then it creates a deck of cards by adding all the cards to the deck ArrayList, shuffles all the cards, and implements the dealCards method which will remove numCards number of different cards from the original ArrayList and returns a new ArrayList with the the numCards number of cards(here numCards is 5).
 
